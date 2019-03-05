@@ -59,10 +59,9 @@ def save_data(df, database_filename):
     Returns:
         None
     """
-    db_name = database_filename.split('.')[0]
     db_path = 'sqlite:///' + database_filename
     engine = create_engine(db_path)
-    df.to_sql(db_name, engine, index=False)
+    df.to_sql('cleaned_messages', engine, index=False)
 
 
 def main():
