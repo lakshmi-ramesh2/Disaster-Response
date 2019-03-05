@@ -12,7 +12,7 @@ def load_data(messages_filepath, categories_filepath):
     """
     # load messages dataset and categories dataset
     messages = pd.read_csv(messages_filepath)  
-    categories = pd.read_csv('categories.csv')
+    categories = pd.read_csv(categories_filepath)
     # merge messages and categories dataframes into a single dataframe - df
     df = pd.merge(messages, categories, how='left', on=['id'])
     return df
@@ -36,7 +36,7 @@ def clean_data(df):
     
     # Convert category columns to numbers - 0 or 1
     for column in categories:
-        categories[column] = categories[column].astype(str).str[-1]
+       categories[column] = categories[column].astype(str).str[-1]
     
         # convert column from string to numeric
        categories[column] = categories[column].astype(int)
