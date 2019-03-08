@@ -47,5 +47,6 @@ To run the files, follow the below instructions:
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 3. To run the web app, go to the app folder:
     `python run.py`
+4. To view the app, go to http://0.0.0.0:3001/ 
 
 
