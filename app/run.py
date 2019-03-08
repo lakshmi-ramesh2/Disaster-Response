@@ -21,7 +21,7 @@ app = Flask(__name__)
 def tokenize(text):
     text = re.sub(r"[^a-zA-Z0-9]", " ", text)
     tokens = word_tokenize(text)
-    tokens = [word for word in tokens if word not in stopwords.words('english')]
+    #tokens = [word for word in tokens if word not in stopwords.words('english')]
     lemmatizer = WordNetLemmatizer()
 
     clean_tokens = []
@@ -57,13 +57,14 @@ def index():
     
     # Extract top 10 keywords for messages under the news genre
     df_news = df[df['genre'] == 'news']
+    df_news = df_news[:100]
     news_keywords = []
     for index, row in df_news.iterrows():
         news_tokens = tokenize(row['message'])
         for t in news_tokens:
           news_keywords.append(t)
 
-    #news_keywords = [word for word in news_keywords if word not in stopwords.words('english')]
+    news_keywords = [word for word in news_keywords if word not in stopwords.words('english')]
     from collections import Counter
     words_to_count = (word for word in news_keywords)
     c = Counter(words_to_count)
