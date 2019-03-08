@@ -33,10 +33,19 @@ There are 2 jupyter notebooks that contain the ETL and ML pipelines.
 
 In addition, there are 3 main folders:
 
-1. data - containing the raw messages and categories dataset as well as a python script process_data.py that reads in the data and does the cleansing and finally stores the cleaned data in a database
+1. data - containing the raw messages and categories dataset as well as a python script process_data.py that reads in the data and does the cleansing and finally stores the cleaned data in a database table called cleaned_messages
 
 2. model - reads the dataset from the database, does NLP tasks and implements a classification model
 
 3. app - files to run the web app that embeds the dataset and the model.
+
+To run the files, follow the below instructions:
+
+1. To run the ETL pipeline:
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+2. To run the ML pipeline:
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+3. To run the web app, go to the app folder:
+    `python run.py`
 
 
