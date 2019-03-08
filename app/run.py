@@ -63,7 +63,10 @@ def index():
         for t in news_tokens:
           news_keywords.append(t)
 
+    # Remove stop words from news_keywords
     news_keywords = [word for word in news_keywords if word not in stopwords.words('english')]
+    
+    # Count the frequency of words and create the top 10 lists
     from collections import Counter
     words_to_count = (word for word in news_keywords)
     c = Counter(words_to_count)
