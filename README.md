@@ -44,7 +44,7 @@ To run the files, follow the below instructions:
 1. To run the ETL pipeline:
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
 2. To run the ML pipeline:
-        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+        `python model/train_classifier.py data/DisasterResponse.db model/classifier.pkl`
 3. To run the web app, go to the app folder:
     `python run.py`
 4. To view the app, go to http://0.0.0.0:3001/ 
