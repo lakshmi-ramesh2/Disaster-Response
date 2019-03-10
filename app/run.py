@@ -19,13 +19,21 @@ from sqlalchemy import create_engine
 app = Flask(__name__)
 
 def tokenize(text):
+    text = text.lower()
     text = re.sub(r"[^a-zA-Z0-9]", " ", text)
     tokens = word_tokenize(text)
+    
+    STOPWORDS = list(set(stopwords.words('english')))
+    # remove short words
+    tokens = [token for token in tokens if len(token) > 2]
+    # remove stopwords
+    tokens = [token for token in tokens if token not in STOPWORDS]
+    
     lemmatizer = WordNetLemmatizer()
 
     clean_tokens = []
     for tok in tokens:
-        clean_tok = lemmatizer.lemmatize(tok).lower().strip()
+        clean_tok = lemmatizer.lemmatize(tok).strip()
         clean_tokens.append(clean_tok)
 
     return clean_tokens
