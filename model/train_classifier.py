@@ -12,7 +12,8 @@ from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.metrics import classification_report, accuracy_score, precision_score, recall_score, f1_score
 import pickle
 import nltk
-nltk.download(['punkt', 'wordnet', 'averaged_perceptron_tagger'])
+from nltk.corpus import stopwords
+nltk.download(['punkt', 'wordnet', 'averaged_perceptron_tagger','stopwords'])
 
 def load_data(database_filepath):
     """ Function to load the data from the database into a dataframe 
@@ -40,13 +41,23 @@ def tokenize(text):
     Returns:
         clean_tokens: List of clean tokens after tokenization and cleansing
     """
+    # convert text to lowercase
+    text = text.lower()
+    
     tokens = word_tokenize(text)
+    
+    STOPWORDS = list(set(stopwords.words('english')))
+    # remove short words
+    tokens = [token for token in tokens if len(token) > 2]
+    # remove stopwords
+    tokens = [token for token in tokens if token not in STOPWORDS]
+    
     lemmatizer = WordNetLemmatizer()
 
     # clean tokens by lemmatizing, making all tokens lowercase and stripping any whitespace
     clean_tokens = []
     for tok in tokens:
-        clean_tok = lemmatizer.lemmatize(tok).lower().strip()
+        clean_tok = lemmatizer.lemmatize(tok).strip()
         clean_tokens.append(clean_tok)
 
     return clean_tokens
