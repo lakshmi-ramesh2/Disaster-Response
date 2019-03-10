@@ -49,4 +49,9 @@ To run the files, follow the below instructions:
     `python run.py`
 4. To view the app, go to http://0.0.0.0:3001/ 
 
+Screenshots of the web app are provided below for reference in the screenshots folder.
+
+![Alt text](/screenshots/main.png?raw=true "Classify Message")
+![Alt text](/screenshots/viz1.png?raw=true "Visualization 1")
+![Alt text](/screenshots/viz2.png?raw=true "Visualization 2")
 
